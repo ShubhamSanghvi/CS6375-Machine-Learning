@@ -1,0 +1,79 @@
+\documentclass[12pt,fleqn]{exam}
+\usepackage{amsmath}
+\setlength{\mathindent}{0pt}
+\usepackage{amssymb}
+
+
+\title{ML Assignment 1}
+\author{Shubham Sanghavi}
+\date{\today}
+
+
+\begin{document}
+
+   \begin{flushleft}
+      \textit{CS 6375 Spring 2020}\\
+      \Large\textbf{Problem Set 1}\\
+   \end{flushleft}
+
+\begin{flushleft}
+Netid: SAS19003\\
+Name: Shubham Sanghavi\\
+Email: shubham.sanghavi@utdallas.edu\\
+\end{flushleft}
+
+
+\section*{Warm-Up : Subgradients and More}
+\begin{enumerate}
+    \item Recall that a function $f: \mathbb{R}^n \rightarrow \mathbb{R}$ is convex for all $x,y \in \mathbb{R}^n$ and $\lambda \in [0,1], if \\ \lambda f(x)+ (1-\lambda)f(y) \geq f(\lambda x + (1-\lambda)y)$. Using this definition, show that
+    \begin{enumerate}
+    \item $f(x) = w f_1(x)$ is a convex function for $ x \in \mathbb{R}^n$ whenever $f_1: \mathbb{R}^n \rightarrow \mathbb{R}$ is a convex function and $ w \geq 0$\\ \\
+    \textbf{Ans:}
+    {\setlength{\abovedisplayskip}{0pt}
+    \begin{flalign*}
+        &\lambda f(x)+ (1-\lambda)f(y)\\
+        =\quad &\lambda w f_1(x) + ( 1 - \lambda)w f_1(y) 
+        \ \ \ \ [ \ \because f(x) = w f_1(x) \ ]\\
+        =\quad &w (\lambda f_1(x)+ (1-\lambda)f_1(y))\\
+        \geq \quad &w f_1(\lambda x + (1-\lambda)y)\\
+        & \qquad [ \ \because w \geq 0 \qquad \text {and} \\
+        & \qquad \ \because f_1 \  \text{is a convex function}\\
+        & \qquad \qquad \Longleftrightarrow \lambda f_1(x)+ (1-\lambda)f_1(y) \geq f_1(\lambda x + (1-\lambda)y) \ ]\\
+        = \quad & f( \lambda x + ( 1 - \lambda) y )\\
+        \therefore \quad & \lambda f(x)+ (1-\lambda)f(y) \geq f(\lambda x + (1-\lambda)y\\
+        \therefore \quad & f \ \text{is a convex function}
+    \end{flalign*}}
+    \item $f(x) = f_1(x) + f_2(x) $ is a convex function for $ x \in \mathbb{R}^n$ whenever $f_1: \mathbb{R}^n \rightarrow \mathbb{R}$ and $f_2: \mathbb{R}^n \rightarrow \mathbb{R}$ are convex functions\\ \\
+    \textbf{Ans:}
+    {\setlength{\abovedisplayskip}{0pt}
+    \begin{flalign*}
+        &\lambda f(x)+ (1-\lambda)f(y)\\
+        = \quad &\lambda (f_1(x) + f_2(x)) + (1-\lambda) (f_1(y) + f_2(y))\\
+        = \quad &\lambda f_1(x) + (1-\lambda) f_1(y) + \lambda f_2(x) +  (1-\lambda) f_2(y)\\
+        \geq \quad & f_1(\lambda x + ( 1 - \lambda) y) + f_2( \lambda x + ( 1 - \lambda) y)\\
+        & \qquad [ \ \because f_1 \ \text{and} \ f_2 \ \text{are convex functions} \ ]\\
+        = \quad & f( \lambda x + ( 1 - \lambda) y )\\
+        \therefore \quad & \lambda f(x)+ (1-\lambda)f(y) \geq f(\lambda x + (1-\lambda)y\\
+        \therefore \quad & f \ \text{is a convex function}
+    \end{flalign*}}
+    \item $f(x) = max\{f_1(x),f_2(x)\} $ is a convex function for $ x \in \mathbb{R}^n$ whenever $f_1: \mathbb{R}^n \rightarrow \mathbb{R}$ and $f_2: \mathbb{R}^n \rightarrow \mathbb{R}$ are convex functions\\ \\
+    \textbf{Ans:}
+    {\setlength{\abovedisplayskip}{0pt}
+    \begin{flalign*}
+        &\lambda f(x)+ (1-\lambda)f(y)\\
+        = \quad & \lambda \  max\{f_1(x),f_2(x)\} + ( 1 - \lambda) \  max\{f_1(y),f_2(y)\}\\
+        \geq \quad & \lambda f_1(x) + ( 1 - \lambda) f_1(y) \qquad \qquad \text {and} \qquad \qquad \geq  \quad \lambda f_2(x) + ( 1 - \lambda) f_2(y)\\
+        & \qquad [ \ \because \ max\{f_1(x),f_2(x)\} \geq f_1(x) \ ] \qquad  \qquad  \qquad [\ \because \ max\{f_1(x),f_2(x)\} \geq f_2(x) \ ]\\
+        \geq \quad & f_1(\lambda x + (1-\lambda) y) \qquad \qquad \qquad \text{and} \qquad \qquad \geq \quad  f_2(\lambda x + (1-\lambda) y) \\
+        & \qquad [ \ \because \ f_1 \text{ is a convex function} \ ] \qquad  \qquad \qquad \qquad [\ \because \ f_2 \text{ is a convex function} \ ]\\
+        \Leftrightarrow \quad &  \lambda f(x)+ (1-\lambda)f(y) \geq max\{f_1(\lambda x + (1-\lambda) y),f_2(\lambda x + (1-\lambda) y)\}\\
+        \Leftrightarrow \quad &  \lambda f(x)+ (1-\lambda)f(y) \geq f(\lambda x + (1-\lambda) y)\\
+        \therefore \quad & f \ \text{is a convex function}
+    \end{flalign*}}
+
+    \end{enumerate}
+
+    
+\end{enumerate}
+
+\end{document}
